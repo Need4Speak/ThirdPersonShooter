@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
         public Vector2 Sensitivity;
     }
     [SerializeField] float speed;
-    [SerializeField] MouseInput moveControl;
+    [SerializeField] MouseInput MouseControl;
 
     private MoveController moveController;
     public MoveController MoveController
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         }
     }
     public InputController playerInput;
+    Vector2 mouseInput;
     // Awake在MonoBehavior创建后就立刻调用，Start将在MonoBehavior创建后在该帧Update之前
     void Awake()
     {
@@ -38,5 +39,9 @@ public class Player : MonoBehaviour
     {
         Vector2 direction = new Vector2(playerInput.Vertical * speed, playerInput.Horizontal * speed);
         MoveController.Move(direction);
+
+        mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.MouseInput.x, 1f / MouseControl.Damping.x);
+        transform.Rotate(Vector3.up * mouseInput.x * MouseControl.Sensitivity.x);
+
     }
 }
