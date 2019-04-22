@@ -9,6 +9,9 @@ public class InputController : MonoBehaviour
     public Vector2 MouseInput;
     public bool Fire1;
 
+    /**
+     * 获取输入
+     * */
     void Update()
     {
         Vertical = Input.GetAxis("Vertical");

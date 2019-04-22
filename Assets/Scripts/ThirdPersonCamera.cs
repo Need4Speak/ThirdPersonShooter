@@ -6,8 +6,8 @@ using UnityEngine;
  * */
 public class ThirdPersonCamera : MonoBehaviour
 {
-    [SerializeField] Vector3 cameraOffset;
-    [SerializeField] float damping;
+    [SerializeField] Vector3 cameraOffset = new Vector3(0, 3, -7);
+    [SerializeField] float damping = 1;
 
     Transform cameraLookAtTarget;
     Player localPlayer;
@@ -29,7 +29,7 @@ public class ThirdPersonCamera : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // 更新摄像机位置
     void Update()
     {
         Vector3 targetPosition = cameraLookAtTarget.position

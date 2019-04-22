@@ -25,6 +25,9 @@ public class GameManager
         }
     }
 
+    /**
+     * 获取输入
+     * */
     private InputController m_InputController;
     public InputController InputController
     {

@@ -32,7 +32,7 @@ public class Shooter : MonoBehaviour
             return;
         }
         nextFireAllowed = Time.time + rateOfFire;
-        print("Firing in " + Time.time);
+        //print("Firing in " + Time.time);
 
         // 实例化子弹
         Instantiate(projectile, muzzle.position, muzzle.rotation);

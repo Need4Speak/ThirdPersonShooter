@@ -5,24 +5,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [System.Serializable]
+    /**
+     * 鼠标设置阻尼和灵敏度
+     * */
     public class MouseInput
     {
         public Vector2 Damping;
         public Vector2 Sensitivity;
     }
-    [SerializeField] float speed;
+    [SerializeField] float speed = 5;
     [SerializeField] MouseInput MouseControl;
 
-    private MoveController moveController;
+    private MoveController m_MoveController;
     public MoveController MoveController
     {
         get
         {
-            if(moveController == null)
+            if(m_MoveController == null)
             {
-                moveController = GetComponent<MoveController>();
+                m_MoveController = GetComponent<MoveController>();
             }
-            return moveController;
+            return m_MoveController;
         }
     }
     public InputController playerInput;

@@ -7,6 +7,7 @@ using UnityEngine;
  * */
 public class AssaultRifle : Shooter
 {
+    //[SerializeField] float rateOfFire = 0.2f;
     public override void Fire()
     {
         base.Fire();
