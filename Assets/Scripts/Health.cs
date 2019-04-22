@@ -7,12 +7,29 @@ using UnityEngine;
  * */
 public class Health : Destructable
 {
+    [SerializeField] float inSeconds;
+
+    /**
+     * 死亡处理
+     * */
     public override void Die()
     {
         base.Die();
+        GameManager.Instance.Respawner.Despawn(gameObject, inSeconds);
         print("we died");
     }
 
+    /**
+     * 物体重生
+     * */
+    private void OnEnable()
+    {
+        Reset();
+    }
+
+    /**
+     * 受伤处理
+     * */
     public override void TakeDamage(float amount)
     {
         base.TakeDamage(amount);
