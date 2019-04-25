@@ -8,8 +8,7 @@ using System.Linq;
  * */
 public class Container : MonoBehaviour
 {
-    [System.Serializable]
-    public class ContainerItem
+    private class ContainerItem
     {
         public System.Guid Id;
         public string Name;
@@ -47,7 +46,7 @@ public class Container : MonoBehaviour
 
     }
 
-    public List<ContainerItem> items;
+    List<ContainerItem> items;
 
     private void Awake()
     {

@@ -10,17 +10,10 @@ public class WeaponReloader : MonoBehaviour
     [SerializeField] int maxAmmo;
     [SerializeField] float reloadTime;
     [SerializeField] int clipSize;
-    [SerializeField] Container inventory;
 
-//    int ammo;
+    int ammo;
     public int shotsFiredInClip;
     bool isReloading;
-    System.Guid containerItemId;
-
-    private void Awake()
-    {
-        containerItemId = inventory.Add(this.name, maxAmmo); 
-    }
 
     /**
      * 当前使用弹匣
@@ -54,22 +47,25 @@ public class WeaponReloader : MonoBehaviour
             return;
         }
         isReloading = true;
-
-        int amountFromInventory = inventory.TakeFromContainer(containerItemId, clipSize - RoundsRemainingInClip);
-
         print("正在换弹");
-        GameManager.Instance.Timer.Add(()=> { ExecuteReload(amountFromInventory);}, reloadTime);
+        GameManager.Instance.Timer.Add(ExecuteReload, reloadTime);
     }
 
     /**
      * 执行换弹动作
      * */
-    private void ExecuteReload(int amount)
+    private void ExecuteReload()
     {
         print("完成换弹");
         isReloading = false;
+        ammo -= shotsFiredInClip;
+        shotsFiredInClip = 0;
 
-        shotsFiredInClip -= amount;
+        if(ammo < 0)
+        {
+            ammo = 0;
+            shotsFiredInClip += -ammo;
+        }
     }
 
     /**
