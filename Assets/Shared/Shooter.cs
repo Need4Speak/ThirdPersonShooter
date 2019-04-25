@@ -10,7 +10,9 @@ public class Shooter : MonoBehaviour
     [SerializeField] float rateOfFire;
     [SerializeField] Projectile projectile;
     
-    [HideInInspector] public Transform muzzle; // 枪口
+    Transform muzzle; // 枪口
+
+    [SerializeField] Transform hand;
 
     private WeaponReloader reloader;
 
@@ -21,6 +23,7 @@ public class Shooter : MonoBehaviour
     {
         muzzle = transform.Find("Muzzle");
         reloader = GetComponent<WeaponReloader>();
+        transform.SetParent(hand);
     }
 
     /**

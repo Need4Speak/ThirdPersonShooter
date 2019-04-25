@@ -10,7 +10,6 @@ public class PlayerShoot : MonoBehaviour
     {
         if(GameManager.Instance.InputController.Fire1)
         {
-            print("here");
             assaultRifle.Fire();
         }
     }
