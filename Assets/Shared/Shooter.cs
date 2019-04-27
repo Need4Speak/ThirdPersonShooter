@@ -19,11 +19,19 @@ public class Shooter : MonoBehaviour
     float nextFireAllowed; //射击时间间隔
     public bool canFire; // 是否可以射击、
 
+    /**
+     * 装备武器
+     * */
+    public void Equip()
+    {
+        transform.SetParent(hand);
+    }
+
     private void Awake()
     {
         muzzle = transform.Find("Muzzle");
         reloader = GetComponent<WeaponReloader>();
-        transform.SetParent(hand);
+        //transform.SetParent(hand);
     }
 
     /**

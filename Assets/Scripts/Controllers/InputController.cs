@@ -12,6 +12,8 @@ public class InputController : MonoBehaviour
     public bool IsWalking;
     public bool IsSprinting;
     public bool IsCrouched;
+    public bool MouseWheelUp;
+    public bool MouseWheelDown;
 
     /**
      * 获取输入
@@ -26,5 +28,7 @@ public class InputController : MonoBehaviour
         IsWalking = Input.GetKey(KeyCode.X);
         IsSprinting = Input.GetKey(KeyCode.LeftShift);
         IsCrouched = Input.GetKey(KeyCode.C);
+        MouseWheelUp = Input.GetAxis("Mouse ScrollWheel") > 0;
+        MouseWheelDown = Input.GetAxis("Mouse ScrollWheel") < 0;
     }
 }
