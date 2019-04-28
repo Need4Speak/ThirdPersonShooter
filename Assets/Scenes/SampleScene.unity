@@ -684,6 +684,7 @@ MonoBehaviour:
   maxAmmo: 120
   reloadTime: 2
   clipSize: 20
+  inventory: {fileID: 749238892}
   shotsFiredInClip: 0
 --- !u!114 &1093626406
 MonoBehaviour:
@@ -800,9 +801,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e5f532c826993498260f9133b9b2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 120
+  maxAmmo: 10
   reloadTime: 2
-  clipSize: 20
+  clipSize: 5
+  inventory: {fileID: 749238892}
   shotsFiredInClip: 0
 --- !u!1 &1650297795
 GameObject:

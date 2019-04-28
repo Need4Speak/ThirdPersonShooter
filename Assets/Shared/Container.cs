@@ -47,10 +47,15 @@ public class Container : MonoBehaviour
     }
 
     List<ContainerItem> items;
+    public event System.Action OnContainerReady;
 
     private void Awake()
     {
         items = new List<ContainerItem>();
+        if(OnContainerReady != null)
+        {
+            OnContainerReady();
+        }
     }
 
     /**
