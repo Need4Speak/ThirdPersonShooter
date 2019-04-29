@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     [SerializeField] float sprintSpeed;
     [SerializeField] float crouchedSpeed;
     [SerializeField] MouseInput MouseControl;
+    [SerializeField] AudioController footSteps;
+    [SerializeField] float minimumMoveTreshold; // 发出声音最小距离
+
+    Vector3 previousPosition; // 上一帧所处位置
 
     private MoveController m_MoveController;
     public MoveController MoveController
@@ -58,6 +62,7 @@ public class Player : MonoBehaviour
         //    Cursor.visible = false;
         //    Cursor.lockState = CursorLockMode.Locked;
         //}
+        previousPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -91,13 +96,20 @@ public class Player : MonoBehaviour
         } else if (playerInput.IsSprinting)
         {
             moveSpeed = sprintSpeed;
-        }
-        else if (playerInput.IsCrouched)
+        } else if (playerInput.IsCrouched)
         {
             moveSpeed = crouchedSpeed;
         }
 
         Vector2 direction = new Vector2(playerInput.Vertical * moveSpeed, playerInput.Horizontal * moveSpeed);
+
         MoveController.Move(direction);
+        print(Vector3.Distance(transform.position, previousPosition));
+        if (Vector3.Distance(transform.position, previousPosition) > minimumMoveTreshold)
+        {
+            footSteps.Play();
+            print("play");
+        }
+        previousPosition = transform.position;
     }
 }
