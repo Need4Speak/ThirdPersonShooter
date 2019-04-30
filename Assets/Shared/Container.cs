@@ -77,11 +77,34 @@ public class Container : MonoBehaviour
      * */
     public int TakeFromContainer(System.Guid id, int amount)
     {
-        var containerItem = items.Where(x => x.Id == id).FirstOrDefault();
+        var containerItem = GetContainerItem(id);
         if(containerItem == null)
         {
             return -1;
         }
         return containerItem.Get(amount);
+    }
+
+    /**
+     * 获取剩余弹药数量
+     * */
+    public int GetAmountRemaining(System.Guid id)
+    {
+        var containerItem = GetContainerItem(id);
+        if (containerItem == null)
+        {
+            return -1;
+        }
+        return containerItem.Remaining;
+    }
+
+    private ContainerItem GetContainerItem(System.Guid id)
+    {
+        var containerItem = items.Where(x => x.Id == id).FirstOrDefault();
+        if (containerItem == null)
+        {
+            return null;
+        }
+        return containerItem;
     }
 }

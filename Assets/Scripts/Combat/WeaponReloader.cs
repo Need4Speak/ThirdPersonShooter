@@ -20,13 +20,24 @@ public class WeaponReloader : MonoBehaviour
     public event System.Action OnAmmoChanged;  //弹药数量变化时触发事件
 
     /**
-     * 当前使用弹匣
+     * 当前弹匣子弹数
      * */
     public int RoundsRemainingInClip
     {
         get
         {
             return clipSize - shotsFiredInClip;
+        }
+    }
+
+    /**
+     * 当前所有子弹数
+     * */
+    public int RoundsRemainingInInventory
+    {
+        get
+        {
+            return inventory.GetAmountRemaining(containerItemId);
         }
     }
 

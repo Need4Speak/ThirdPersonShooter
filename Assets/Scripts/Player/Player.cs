@@ -104,11 +104,11 @@ public class Player : MonoBehaviour
         Vector2 direction = new Vector2(playerInput.Vertical * moveSpeed, playerInput.Horizontal * moveSpeed);
 
         MoveController.Move(direction);
-        print(Vector3.Distance(transform.position, previousPosition));
+        //print(Vector3.Distance(transform.position, previousPosition));
         if (Vector3.Distance(transform.position, previousPosition) > minimumMoveTreshold)
         {
             footSteps.Play();
-            print("play");
+            //print("play");
         }
         previousPosition = transform.position;
     }

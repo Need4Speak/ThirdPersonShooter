@@ -8,6 +8,7 @@ public class AmmoCounter : MonoBehaviour
 {
     [SerializeField] Text text;
     PlayerShoot playerShoot;
+    WeaponReloader reloader;
 
     void Awake()
     {
@@ -21,12 +22,24 @@ public class AmmoCounter : MonoBehaviour
     {
         //inventory = player.GetComponent<Container>();
         playerShoot = player.GetComponent<PlayerShoot>();
-        playerShoot.ActiveWeapon.reloader.OnAmmoChanged += OnHandleAmmoChanged;
+        playerShoot.OnWeaponSwitch += HandleOnWeaponSwitch;
+
+        //reloader = playerShoot.ActiveWeapon.reloader;
+        //reloader.OnAmmoChanged += HandleAmmoChanged;
     }
 
-    private void OnHandleAmmoChanged()
+    private void HandleOnWeaponSwitch(Shooter activeWeapon)
     {
-        text.text = playerShoot.ActiveWeapon.reloader.RoundsRemainingInClip.ToString();
+        reloader = activeWeapon.reloader;
+        reloader.OnAmmoChanged += HandleAmmoChanged;
+        HandleAmmoChanged();
+    }
+
+    private void HandleAmmoChanged()
+    {
+        int amountInInventory = reloader.RoundsRemainingInInventory;
+        int amountInClip = reloader.RoundsRemainingInClip;
+        text.text = string.Format("{0}/{1}", amountInClip, amountInInventory);
     }
 
     // Update is called once per frame
