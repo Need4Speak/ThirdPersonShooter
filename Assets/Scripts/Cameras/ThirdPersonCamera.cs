@@ -32,6 +32,10 @@ public class ThirdPersonCamera : MonoBehaviour
     // 更新摄像机位置
     void Update()
     {
+        if(localPlayer == null)
+        {
+            return;
+        }
         Vector3 targetPosition = cameraLookAtTarget.position
             + localPlayer.transform.forward * cameraOffset.z
             + localPlayer.transform.up * cameraOffset.y

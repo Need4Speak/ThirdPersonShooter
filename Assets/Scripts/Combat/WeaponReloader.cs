@@ -17,6 +17,8 @@ public class WeaponReloader : MonoBehaviour
     bool isReloading;
     System.Guid containerItemId;
 
+    public event System.Action OnAmmoChanged;  //弹药数量变化时触发事件
+
     /**
      * 当前使用弹匣
      * */
@@ -69,6 +71,11 @@ public class WeaponReloader : MonoBehaviour
         print("完成换弹");
         isReloading = false;
         shotsFiredInClip -= amount;
+
+        if(OnAmmoChanged != null)
+        {
+            OnAmmoChanged();
+        }
     }
 
     /**
@@ -77,6 +84,11 @@ public class WeaponReloader : MonoBehaviour
     public void TakeFromClip(int amount)
     {
         shotsFiredInClip += amount;
+
+        if (OnAmmoChanged != null)
+        {
+            OnAmmoChanged();
+        }
     }
 
 }

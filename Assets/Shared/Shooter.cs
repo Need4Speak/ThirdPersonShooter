@@ -15,7 +15,7 @@ public class Shooter : MonoBehaviour
 
     Transform muzzle; // 枪口
 
-    private WeaponReloader reloader;
+    public WeaponReloader reloader;
 
     float nextFireAllowed; //射击时间间隔
     public bool canFire; // 是否可以射击、
