@@ -9,10 +9,11 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] float rateOfFire;
     [SerializeField] Projectile projectile;
-    
-    Transform muzzle; // 枪口
-
     [SerializeField] Transform hand;
+    [SerializeField] AudioController audioFire; //开火音效
+    [SerializeField] AudioController audioReload; //换弹音效
+
+    Transform muzzle; // 枪口
 
     private WeaponReloader reloader;
 
@@ -46,6 +47,7 @@ public class Shooter : MonoBehaviour
             return;
         }
         reloader.Reload();
+        audioReload.Play();
     }
 
     /**
@@ -81,6 +83,7 @@ public class Shooter : MonoBehaviour
         // 实例化子弹
         Instantiate(projectile, muzzle.position, muzzle.rotation);
         canFire = true;
+        audioFire.Play();
     }
 
 }
