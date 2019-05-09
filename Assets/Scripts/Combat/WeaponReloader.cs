@@ -9,8 +9,9 @@ public class WeaponReloader : MonoBehaviour
 {
     [SerializeField] int maxAmmo;
     [SerializeField] float reloadTime;
-    [SerializeField] int clipSize;
-    [SerializeField] Container inventory;
+    [SerializeField] int clipSize;  // 弹匣弹药量
+    [SerializeField] Container inventory; //总弹药量
+    [SerializeField] EWeaponType weaponType;
 
     int ammo;
     public int shotsFiredInClip;
@@ -55,7 +56,7 @@ public class WeaponReloader : MonoBehaviour
     void Awake()
     {
         inventory.OnContainerReady += () => {
-            containerItemId = inventory.Add(this.name, maxAmmo);
+            containerItemId = inventory.Add(weaponType.ToString(), maxAmmo);
         };
     }
 
@@ -95,8 +96,15 @@ public class WeaponReloader : MonoBehaviour
     public void TakeFromClip(int amount)
     {
         shotsFiredInClip += amount;
+        HandleOnAmmoChanged();
+    }
 
-        if (OnAmmoChanged != null)
+    /**
+     * 子弹数量变化时触发
+     * */
+    public void HandleOnAmmoChanged()
+    {
+        if(OnAmmoChanged != null)
         {
             OnAmmoChanged();
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 /**
  * 弹匣
@@ -44,6 +45,14 @@ public class Container : MonoBehaviour
             return value;
         }
 
+        internal void Set(int amount)
+        {
+            amountTaken -= amount;
+            if(amountTaken < 0)
+            {
+                amountTaken = 0;
+            }
+        }
     }
 
     List<ContainerItem> items;
@@ -72,6 +81,22 @@ public class Container : MonoBehaviour
 
         return items.Last().Id;
     }
+
+    /**
+     * 增加弹药
+     * @param name: 弹药名称
+     * @param amount: 弹药数量
+     * */
+    public void Put(string name, int amount)
+    {
+        var containerItem = items.Where(x => x.Name == name).FirstOrDefault();
+        if(containerItem == null)
+        {
+            return;
+        }
+        containerItem.Set(amount);
+    }
+
     /**
      * 获取弹药
      * */

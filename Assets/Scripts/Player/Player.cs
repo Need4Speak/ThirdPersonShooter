@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] MouseInput MouseControl;
     [SerializeField] AudioController footSteps;
     [SerializeField] float minimumMoveTreshold; // 发出声音最小距离
-
+    
     Vector3 previousPosition; // 上一帧所处位置
 
     private MoveController m_MoveController;
@@ -34,6 +34,19 @@ public class Player : MonoBehaviour
                 m_MoveController = GetComponent<MoveController>();
             }
             return m_MoveController;
+        }
+    }
+
+    private PlayerShoot m_PlayerShoot;
+    public PlayerShoot PlayerShoot
+    {
+        get
+        {
+            if(m_PlayerShoot == null)
+            {
+                m_PlayerShoot = GetComponent<PlayerShoot>();
+            }
+            return m_PlayerShoot;
         }
     }
 
