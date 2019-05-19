@@ -22,9 +22,11 @@ public class PlayerAnimation : MonoBehaviour
             GameManager.Instance.InputController.Horizontal);
         animator.SetBool("IsWalking",
             GameManager.Instance.InputController.IsWalking);
-        animator.SetBool("IsSprinting",
-            GameManager.Instance.InputController.IsSprinting);
+        //animator.SetBool("IsSprinting",
+        //    GameManager.Instance.InputController.IsSprinting);
         animator.SetBool("IsCrouched",
             GameManager.Instance.InputController.IsCrouched);
+        animator.SetBool("IsJump",
+            GameManager.Instance.InputController.IsJumped);
     }
 }

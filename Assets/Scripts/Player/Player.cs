@@ -37,6 +37,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    private JumpController m_JumpController;
+    public JumpController JumpController
+    {
+        get
+        {
+            if (m_JumpController == null)
+            {
+                m_JumpController = GetComponent<JumpController>();
+            }
+            return m_JumpController;
+        }
+    }
+
     private PlayerShoot m_PlayerShoot;
     public PlayerShoot PlayerShoot
     {
@@ -82,6 +95,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         LookAround();
+        //Jump();
         Move();
     }
 
@@ -99,6 +113,21 @@ public class Player : MonoBehaviour
         Crosshair.LookHeight(mouseInput.y * MouseControl.Sensitivity.y);
     }
 
+    /**
+     * 控制角色跳跃
+     * */
+    void Jump()
+    {
+        if (playerInput.IsJumped)
+        {
+            JumpController.jump();
+            Debug.Log("is jump");
+        }
+    }
+
+    /**
+     * 控制角色移动
+     * */
     void Move()
     {
         float moveSpeed = runSpeed;
@@ -106,12 +135,14 @@ public class Player : MonoBehaviour
         if(playerInput.IsWalking)
         {
             moveSpeed = walkSpeed;
-        } else if (playerInput.IsSprinting)
-        {
-            moveSpeed = sprintSpeed;
-        } else if (playerInput.IsCrouched)
+        }  else if (playerInput.IsCrouched)
         {
             moveSpeed = crouchedSpeed;
+        }
+        if (playerInput.IsJumped)
+        {
+            JumpController.jump();
+            Debug.Log("is jump");
         }
 
         Vector2 direction = new Vector2(playerInput.Vertical * moveSpeed, playerInput.Horizontal * moveSpeed);
