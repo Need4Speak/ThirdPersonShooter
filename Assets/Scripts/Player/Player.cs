@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(MoveController))]
+[RequireComponent(typeof(PlayerState))]
 public class Player : MonoBehaviour
 {
     [System.Serializable]
@@ -74,7 +75,20 @@ public class Player : MonoBehaviour
             }
             return m_Crosshair;
         }
+    }
+
+    private PlayerState m_PlayerState;
+    public PlayerState PlayerState
+    {
+        get
+        {
+            if (m_PlayerState == null)
+            {
+                m_PlayerState = GetComponent<PlayerState>();
             }
+            return m_PlayerState;
+        }
+    }
 
     public InputController playerInput;
     Vector2 mouseInput;

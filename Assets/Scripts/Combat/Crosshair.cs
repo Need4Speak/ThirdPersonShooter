@@ -31,8 +31,14 @@ public class Crosshair : MonoBehaviour
      * */
     private void OnGUI()
     {
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        screenPosition.y = Screen.height - screenPosition.y;
-        GUI.DrawTexture(new Rect(screenPosition.x, screenPosition.y - lookHeight, size, size), image);
+        // 瞄准时出现准心
+        if (GameManager.Instance.LocalPlayer.PlayerState.WeaponState == PlayerState.EWeaponState.AIMING ||
+            GameManager.Instance.LocalPlayer.PlayerState.WeaponState == PlayerState.EWeaponState.AIMEDFIRING)
+        {
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+            screenPosition.y = Screen.height - screenPosition.y;
+            GUI.DrawTexture(new Rect(screenPosition.x, screenPosition.y - lookHeight, size, size), image);
+        }
+
     }
 }
