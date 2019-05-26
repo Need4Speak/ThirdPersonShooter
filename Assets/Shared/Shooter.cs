@@ -17,6 +17,8 @@ public class Shooter : MonoBehaviour
 
     public WeaponReloader reloader;
 
+    private ParticleSystem muzzleFireParticleSystem;  // 枪口火焰
+
     float nextFireAllowed; //射击时间间隔
     public bool canFire; // 是否可以射击、
 
@@ -34,6 +36,7 @@ public class Shooter : MonoBehaviour
     {
         muzzle = transform.Find("Model/Muzzle");
         reloader = GetComponent<WeaponReloader>();
+        muzzleFireParticleSystem = muzzle.GetComponent<ParticleSystem>();
         //transform.SetParent(hand);
     }
 
@@ -48,6 +51,19 @@ public class Shooter : MonoBehaviour
         }
         reloader.Reload();
         audioReload.Play();
+    }
+
+    /**
+     * 开火效果
+     * */
+    void FireEffect()
+    {
+        if(muzzleFireParticleSystem == null)
+        {
+            return;
+        }
+        print("muzzleFireParticleSystem.Play()");
+        muzzleFireParticleSystem.Play();
     }
 
     /**
@@ -79,6 +95,8 @@ public class Shooter : MonoBehaviour
 
         nextFireAllowed = Time.time + rateOfFire;
         //print("Firing in " + Time.time);
+
+        FireEffect();
 
         // 实例化子弹
         Instantiate(projectile, muzzle.position, muzzle.rotation);
