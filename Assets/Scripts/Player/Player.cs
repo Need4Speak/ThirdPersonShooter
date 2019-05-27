@@ -97,11 +97,11 @@ public class Player : MonoBehaviour
     {
         playerInput = GameManager.Instance.InputController;
         GameManager.Instance.LocalPlayer = this;
-        //if(MouseControl.LockMouse)
-        //{
-        //    Cursor.visible = false;
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //}
+        if(MouseControl.LockMouse)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         previousPosition = transform.position;
     }
 

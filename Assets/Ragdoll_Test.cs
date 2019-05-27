@@ -7,12 +7,23 @@ public class Ragdoll_Test : Destructable
     public Animator animator;
     private Rigidbody[] bodyParts;
     private MoveController moveController;  // 控制敌人行走
+    [SerializeField] SpawnPoint[] spawnPoints;
 
     private void Start()
     {
         bodyParts = transform.GetComponentsInChildren<Rigidbody>();
         EnableRagdoll(false);
         moveController = GetComponent<MoveController>();
+    }
+
+    /**
+     * 重生点随机复活
+     * */
+    void SpawnAtNewSpawnPoint()
+    {
+        int spawnIndex = Random.Range(0, spawnPoints.Length);
+        transform.position = spawnPoints[spawnIndex].transform.position;
+        transform.rotation = spawnPoints[spawnIndex].transform.rotation;
     }
 
     /**
@@ -23,6 +34,14 @@ public class Ragdoll_Test : Destructable
         base.Die();
         EnableRagdoll(true);
         animator.enabled = false;
+
+        GameManager.Instance.Timer.Add(() =>
+        {
+            EnableRagdoll(false);
+            SpawnAtNewSpawnPoint();
+            animator.enabled = true;
+            Reset();
+        }, 5);
     }
 
     private void Update()
