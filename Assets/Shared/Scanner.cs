@@ -17,7 +17,31 @@ public class Scanner : MonoBehaviour
 
     SphereCollider rangeTrigger;
     List<Player> targets;  // 被扫描物体
-    Player selectedTarget;
+
+    Player m_selectedTarget;  // 玩家
+    Player selectedTarget
+    {
+        get
+        {
+            return m_selectedTarget;
+        }
+
+        set
+        {
+            m_selectedTarget = value;
+
+            if(m_selectedTarget == null)
+            {
+                return;
+            }
+
+            if(OnTargetSelected != null) {
+                OnTargetSelected(m_selectedTarget.transform.position);
+            }
+        }
+    }
+
+    public event System.Action<Vector3> OnTargetSelected;
 
     private void Start()
     {

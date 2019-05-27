@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(MoveController))]
+[RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerState))]
 public class Player : MonoBehaviour
 {
@@ -25,16 +25,16 @@ public class Player : MonoBehaviour
     
     Vector3 previousPosition; // 上一帧所处位置
 
-    private MoveController m_MoveController;
-    public MoveController MoveController
+    private CharacterController m_CharacterController;
+    public CharacterController CharacterController
     {
         get
         {
-            if(m_MoveController == null)
+            if(m_CharacterController == null)
             {
-                m_MoveController = GetComponent<MoveController>();
+                m_CharacterController = GetComponent<CharacterController>();
             }
-            return m_MoveController;
+            return m_CharacterController;
         }
     }
 
@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
 
         Vector2 direction = new Vector2(playerInput.Vertical * moveSpeed, playerInput.Horizontal * moveSpeed);
 
-        MoveController.Move(direction);
+        CharacterController.Move(transform.forward* direction.x * 0.02f + transform.right * direction.y * 0.02f);
         //print(Vector3.Distance(transform.position, previousPosition));
         if (Vector3.Distance(transform.position, previousPosition) > minimumMoveTreshold)
         {
