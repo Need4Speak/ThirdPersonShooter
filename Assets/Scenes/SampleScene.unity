@@ -6306,6 +6306,8 @@ GameObject:
   - component: {fileID: 356714145}
   - component: {fileID: 356714149}
   - component: {fileID: 356714150}
+  - component: {fileID: 356714144}
+  - component: {fileID: 356714143}
   m_Layer: 0
   m_Name: EnemyPlayer
   m_TagString: Untagged
@@ -6313,6 +6315,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &356714143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356714142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d8d60d8c0f6dd49916676a63cd8a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPoints: 3
+  ragdoll: {fileID: 1627652369}
+--- !u!136 &356714144
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356714142}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.88
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.14, z: 0}
 --- !u!114 &356714145
 MonoBehaviour:
   m_ObjectHideFlags: 0

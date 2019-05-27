@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PathFinder))]
+[RequireComponent(typeof(EnemyHealth))]
 //[RequireComponent(typeof(Scanner))]
 /**
  * ai
@@ -15,6 +16,19 @@ public class EnemyPlayer : MonoBehaviour
 
     Player priorityTarget;
     List<Player> myTargets;
+
+    private EnemyHealth m_EnemyHealth;
+    public EnemyHealth EnemyHealth
+    {
+        get
+        {
+            if(m_EnemyHealth == null)
+            {
+                m_EnemyHealth = GetComponent<EnemyHealth>();
+            }
+            return m_EnemyHealth;
+        }
+    }
 
     private void Start()
     {

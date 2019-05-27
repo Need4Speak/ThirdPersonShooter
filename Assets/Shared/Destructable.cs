@@ -32,10 +32,10 @@ public class Destructable : MonoBehaviour
 
     public virtual void Die()
     {
-        if (!IsAlive)
-        {
-            return;
-        }
+        //if (!IsAlive)
+        //{
+        //    return;
+        //}
         if(OnDeath != null)
         {
             OnDeath();

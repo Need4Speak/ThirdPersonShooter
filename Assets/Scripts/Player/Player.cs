@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
 
         Vector2 direction = new Vector2(playerInput.Vertical * moveSpeed, playerInput.Horizontal * moveSpeed);
 
-        CharacterController.Move(transform.forward* direction.x * 0.02f + transform.right * direction.y * 0.02f);
+        CharacterController.SimpleMove(transform.forward* direction.x + transform.right * direction.y);
         //print(Vector3.Distance(transform.position, previousPosition));
         if (Vector3.Distance(transform.position, previousPosition) > minimumMoveTreshold)
         {

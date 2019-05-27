@@ -7,6 +7,7 @@ using UnityEngine;
  * 控制敌人延检查点移动
  * */
 [RequireComponent(typeof(PathFinder))]
+[RequireComponent(typeof(EnemyPlayer))]
 public class EnemyPatrol : MonoBehaviour
 {
     [SerializeField] WayPointController wayPointController;
@@ -15,6 +16,19 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] float waitTimeMax;
 
     PathFinder pathFinder;
+
+    private EnemyPlayer m_EnemyPlayer;
+    public EnemyPlayer EnemyPlayer
+    {
+        get
+        {
+            if (m_EnemyPlayer == null)
+            {
+                m_EnemyPlayer = GetComponent<EnemyPlayer>();
+            }
+            return m_EnemyPlayer;
+        }
+    }
 
     private void Start()
     {
@@ -27,6 +41,13 @@ public class EnemyPatrol : MonoBehaviour
         pathFinder.OnDestionationReached += PathFinderOnDestinationReached;
         wayPointController.OnWayPointChanged += WayPointControllerOnWayPointChanged;
 
+        EnemyPlayer.EnemyHealth.OnDeath += EnemyHealthOnDeath;
+
+    }
+
+    private void EnemyHealthOnDeath()
+    {
+        pathFinder.Agent.Stop();
     }
 
     /**
