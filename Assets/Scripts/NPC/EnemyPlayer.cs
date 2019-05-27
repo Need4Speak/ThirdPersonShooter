@@ -13,8 +13,6 @@ public class EnemyPlayer : MonoBehaviour
     PathFinder pathFinder;
     Scanner scanner;
 
-    [SerializeField] Animator animator;
-
     private void Start()
     {
         pathFinder = GetComponent<PathFinder>();
@@ -30,8 +28,4 @@ public class EnemyPlayer : MonoBehaviour
         pathFinder.SetTarget(position);
     }
 
-    private void Update()
-    {
-        animator.SetFloat("Vertical", pathFinder.Agent.velocity.z);
-    }
 }

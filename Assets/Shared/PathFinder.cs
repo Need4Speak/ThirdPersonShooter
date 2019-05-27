@@ -14,17 +14,17 @@ public class PathFinder : MonoBehaviour
 
     [SerializeField] float distanceRemainingThreshold;
 
-    bool m_destionationReached;
-    bool destionationReached
+    bool m_destinationReached;
+    bool destinationReached
     {
         get
         {
-            return m_destionationReached;
+            return m_destinationReached;
         }
         set
         {
-            m_destionationReached = value;
-            if(m_destionationReached)
+            m_destinationReached = value;
+            if(m_destinationReached)
             {
                 if(OnDestionationReached != null)
                 {
@@ -36,7 +36,7 @@ public class PathFinder : MonoBehaviour
 
     public event System.Action OnDestionationReached;  // 是否到达目的地
 
-    private void Start()
+    private void Awake()
     {
         Agent = GetComponent<NavMeshAgent>();
     }
@@ -46,19 +46,20 @@ public class PathFinder : MonoBehaviour
      * */
     public void SetTarget(Vector3 target)
     {
+        destinationReached = false;
         Agent.SetDestination(target);
     }
 
     private void Update()
     {
-        if (destionationReached)
+        if (destinationReached)
         {
             return;
         }
 
         if(Agent.remainingDistance < distanceRemainingThreshold)
         {
-             destionationReached = true;
+             destinationReached = true;
         }
     }
 }
