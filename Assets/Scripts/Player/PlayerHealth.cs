@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : Destructable
 {
     [SerializeField] SpawnPoint[] spawnPoints;
+    [SerializeField] Ragdoll ragdoll;
 
     /**
      * 重生点随机复活
@@ -19,6 +20,7 @@ public class PlayerHealth : Destructable
     public override void Die()
     {
         base.Die();
+        ragdoll.EnableRagdoll(true);
         SpawnAtNewSpawnPoint();
     }
 

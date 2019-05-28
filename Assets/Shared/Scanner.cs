@@ -123,7 +123,7 @@ public class Scanner : MonoBehaviour
         {
             float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
             // 视野前有物体
-            if(Physics.Raycast(transform.position + eyeHeight, direction.normalized, distanceToTarget, layerMask))
+            if(Physics.Raycast(transform.position + eyeHeight + transform.forward * 0.3f, direction.normalized, distanceToTarget, layerMask))
             {
                 return false;
             }

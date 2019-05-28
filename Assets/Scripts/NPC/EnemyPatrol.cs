@@ -38,11 +38,23 @@ public class EnemyPatrol : MonoBehaviour
     private void Awake()
     {
         pathFinder = GetComponent<PathFinder>();
+        EnemyPlayer.EnemyHealth.OnDeath += EnemyHealthOnDeath;
+        EnemyPlayer.OnTargetSelected += EnemyPlayerOnTargetSelected;
+
+    }
+
+    private void OnEnable()
+    {
         pathFinder.OnDestionationReached += PathFinderOnDestinationReached;
         wayPointController.OnWayPointChanged += WayPointControllerOnWayPointChanged;
+    }
 
-        EnemyPlayer.EnemyHealth.OnDeath += EnemyHealthOnDeath;
-
+    /**
+     * 锁定目标后
+     * */
+    private void EnemyPlayerOnTargetSelected(Player obj)
+    {
+        pathFinder.Agent.Stop();
     }
 
     private void EnemyHealthOnDeath()

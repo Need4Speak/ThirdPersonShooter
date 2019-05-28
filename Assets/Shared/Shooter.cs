@@ -22,6 +22,9 @@ public class Shooter : MonoBehaviour
     float nextFireAllowed; //射击时间间隔
     public bool canFire; // 是否可以射击、
 
+    public Transform AimTarget;
+    public Vector3 AimTargetOffset;
+
     /**
      * 装备武器
      * */
@@ -95,6 +98,8 @@ public class Shooter : MonoBehaviour
 
         nextFireAllowed = Time.time + rateOfFire;
         //print("Firing in " + Time.time);
+
+        muzzle.LookAt(AimTarget.position + AimTargetOffset);  // 枪口指向瞄准物
 
         FireEffect();
 

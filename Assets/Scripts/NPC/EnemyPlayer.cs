@@ -14,6 +14,10 @@ public class EnemyPlayer : MonoBehaviour
     PathFinder pathFinder;
     [SerializeField] Scanner playerScanner;
 
+    [SerializeField] Soldier EnemySetting;
+
+    public event System.Action<Player> OnTargetSelected;
+
     Player priorityTarget;
     List<Player> myTargets;
 
@@ -33,8 +37,16 @@ public class EnemyPlayer : MonoBehaviour
     private void Start()
     {
         pathFinder = GetComponent<PathFinder>();
+        pathFinder.Agent.speed = EnemySetting.walkSpeed;
         playerScanner.OnScanReady += ScannerOnScanReady;
         ScannerOnScanReady();
+
+        EnemyHealth.OnDeath += EnemyHealthOnDeath;
+    }
+
+    private void EnemyHealthOnDeath()
+    {
+         
     }
 
     /**
@@ -58,6 +70,11 @@ public class EnemyPlayer : MonoBehaviour
 
         if(priorityTarget != null)
         {
+            if(OnTargetSelected != null)
+            {
+                OnTargetSelected(priorityTarget);
+            }
+
             SetDestinationToPriorityTarget();
         }
     }
@@ -83,6 +100,19 @@ public class EnemyPlayer : MonoBehaviour
                 priorityTarget = possibleTarget;
             }
         }
+    }
+
+    /**
+     * 跟随目标
+     * */
+    private void Update()
+    {
+        if(priorityTarget == null)
+        {
+            return;
+        }
+
+        transform.LookAt(priorityTarget.transform.transform.position);
     }
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerState))]
+[RequireComponent(typeof(PlayerHealth))]
 public class Player : MonoBehaviour
 {
     [System.Serializable]
@@ -15,10 +16,7 @@ public class Player : MonoBehaviour
         public Vector2 Sensitivity;
         public bool LockMouse;
     }
-    [SerializeField] float runSpeed;
-    [SerializeField] float walkSpeed;
-    [SerializeField] float sprintSpeed;
-    [SerializeField] float crouchedSpeed;
+    [SerializeField] Soldier soldierSetting;  // 设置
     [SerializeField] MouseInput MouseControl;
     [SerializeField] AudioController footSteps;
     [SerializeField] float minimumMoveTreshold; // 发出声音最小距离
@@ -90,6 +88,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    private PlayerHealth m_PlayerHealth;
+    public PlayerHealth PlayerHealth
+    {
+        get
+        {
+            if (m_PlayerHealth == null)
+            {
+                m_PlayerHealth = GetComponent<PlayerHealth>();
+            }
+            return m_PlayerHealth;
+        }
+    }
+
     public InputController playerInput;
     Vector2 mouseInput;
     // Awake在MonoBehavior创建后就立刻调用，Start将在MonoBehavior创建后在该帧Update之前
@@ -108,9 +119,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LookAround();
-        //Jump();
-        Move();
+        if (PlayerHealth.IsAlive)
+        {
+            LookAround();
+            Jump();
+            Move();
+        }
     }
 
     /**
@@ -144,14 +158,14 @@ public class Player : MonoBehaviour
      * */
     void Move()
     {
-        float moveSpeed = runSpeed;
+        float moveSpeed = soldierSetting.runSpeed;
 
         if(playerInput.IsWalking)
         {
-            moveSpeed = walkSpeed;
+            moveSpeed = soldierSetting.walkSpeed;
         }  else if (playerInput.IsCrouched)
         {
-            moveSpeed = crouchedSpeed;
+            moveSpeed = soldierSetting.crouchedSpeed;
         }
         if (playerInput.IsJumped)
         {
