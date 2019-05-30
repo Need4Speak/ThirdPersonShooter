@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Player))]
 public class PlayerShoot : WeaponController
 {
+    [SerializeField] PauseController pauseController;
     bool IsPlayerAlive;
     private void Start()
     {
@@ -23,7 +24,7 @@ public class PlayerShoot : WeaponController
 
     private void Update()
     {
-        if (!IsPlayerAlive)
+        if (pauseController.Paused || !IsPlayerAlive)
         {
             return;
         }

@@ -20,7 +20,9 @@ public class Player : MonoBehaviour
     [SerializeField] MouseInput MouseControl;
     [SerializeField] AudioController footSteps;
     [SerializeField] float minimumMoveTreshold; // 发出声音最小距离
-    
+
+    [SerializeField] PauseController pauseController;
+
     Vector3 previousPosition; // 上一帧所处位置
 
     private CharacterController m_CharacterController;
@@ -107,6 +109,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         playerInput = GameManager.Instance.InputController;
+
         GameManager.Instance.LocalPlayer = this;
         if(MouseControl.LockMouse)
         {
@@ -119,7 +122,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerHealth.IsAlive)
+        if (PlayerHealth.IsAlive && !pauseController.Paused)
         {
             LookAround();
             Jump();

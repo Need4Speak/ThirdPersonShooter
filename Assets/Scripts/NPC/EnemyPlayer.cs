@@ -42,6 +42,7 @@ public class EnemyPlayer : MonoBehaviour
         ScannerOnScanReady();
 
         EnemyHealth.OnDeath += EnemyHealthOnDeath;
+
     }
 
     private void EnemyHealthOnDeath()

@@ -16,6 +16,7 @@ public class InputController : MonoBehaviour
     public bool IsJumped;
     public bool MouseWheelUp;
     public bool MouseWheelDown;
+    public bool EscDown;
 
     /**
      * 获取输入
@@ -34,5 +35,6 @@ public class InputController : MonoBehaviour
         IsJumped = Input.GetKeyDown(KeyCode.Space);
         MouseWheelUp = Input.GetAxis("Mouse ScrollWheel") > 0;
         MouseWheelDown = Input.GetAxis("Mouse ScrollWheel") < 0;
+        EscDown = Input.GetKeyDown(KeyCode.Escape);
     }
 }

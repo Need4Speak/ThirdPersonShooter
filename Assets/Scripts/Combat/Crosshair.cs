@@ -11,6 +11,8 @@ public class Crosshair : MonoBehaviour
     [SerializeField] float maxAngle;
     [SerializeField] float minAngle;
 
+    [SerializeField] PauseController pauseController;
+
     float lookHeight;
 
     /**
@@ -31,6 +33,9 @@ public class Crosshair : MonoBehaviour
      * */
     private void OnGUI()
     {
+        if (pauseController.Paused)
+            return;
+
         // 瞄准时出现准心
         if (GameManager.Instance.LocalPlayer.PlayerState.WeaponState == PlayerState.EWeaponState.AIMING ||
             GameManager.Instance.LocalPlayer.PlayerState.WeaponState == PlayerState.EWeaponState.AIMEDFIRING)
