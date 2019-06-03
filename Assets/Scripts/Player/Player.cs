@@ -117,7 +117,13 @@ public class Player : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
         previousPosition = transform.position;
+
     }
+
+    //private void Start()
+    //{
+    //    DontDestroyOnLoad(gameObject);
+    //}
 
     // Update is called once per frame
     void Update()

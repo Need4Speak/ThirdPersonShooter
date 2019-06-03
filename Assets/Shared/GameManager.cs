@@ -21,6 +21,7 @@ public class GameManager
                 m_instance.gameObject.AddComponent<InputController>();
                 m_instance.gameObject.AddComponent<Timer>();
                 m_instance.gameObject.AddComponent<Respawner>();
+            
             }
 
             return m_instance;
@@ -86,4 +87,5 @@ public class GameManager
             
         }
     }
+
 }
