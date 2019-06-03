@@ -5,7 +5,7 @@ using UnityEngine;
 public class AmmoPickup : PickupItem
 {
     [SerializeField] EWeaponType weaponType;  //弹药类型
-    [SerializeField] float respawnTime;
+    [SerializeField] float respawnTime;  // 刷新间隔
     [SerializeField] int amount;
 
     /**

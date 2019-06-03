@@ -16,6 +16,6 @@ public class DontDestoryObject : MonoBehaviour
         //DontDestroyOnLoad(GameManager.Instance.Timer);
 
         DontDestroyOnLoad(pauseController);
-        DontDestroyOnLoad(text);
+        //DontDestroyOnLoad(text);
     }
 }

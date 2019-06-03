@@ -9,8 +9,8 @@ using UnityEngine.UI;
 public class HealthCounter : MonoBehaviour
 {
     [SerializeField] Text text;
-    PlayerHealth playerHealth;
-    float health;
+    private PlayerHealth playerHealth;
+    private float health;
 
     void Awake()
     {
@@ -24,12 +24,14 @@ public class HealthCounter : MonoBehaviour
     {
         playerHealth = player.GetComponent<PlayerHealth>();
         playerHealth.OnDamageReceived += HandleOnHealthChanged;
+        playerHealth.OnHealthAdd += HandleOnHealthChanged;
         HandleOnHealthChanged();
     }
 
     private void HandleOnHealthChanged()
     {
         health = playerHealth.HitPointsRemaining;
+        Debug.Log("HitPointsRemaining: " + playerHealth.HitPointsRemaining);
         text.text = string.Format("{0}", health);
     }
 }

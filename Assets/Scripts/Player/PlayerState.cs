@@ -16,6 +16,7 @@ public class PlayerState : MonoBehaviour
         JUMPING
     }
 
+
     // 武器状态
     public enum EWeaponState
     {
