@@ -30,7 +30,7 @@ public class Health : Destructable
     /**
      * 受伤处理
      * */
-    public override void TakeDamage(float amount)
+    public override void TakeDamage(double amount)
     {
         base.TakeDamage(amount);
         print("Remaining: " + HitPointsRemaining);

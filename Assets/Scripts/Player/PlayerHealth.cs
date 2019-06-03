@@ -29,7 +29,7 @@ public class PlayerHealth : Destructable
     /**
      * 受伤
      * */
-    public override void TakeDamage(float amount)
+    public override void TakeDamage(double amount)
     {
         base.TakeDamage(amount);
     }

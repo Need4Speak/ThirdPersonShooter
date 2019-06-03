@@ -10,7 +10,7 @@ public class HealthCounter : MonoBehaviour
 {
     [SerializeField] Text text;
     private PlayerHealth playerHealth;
-    private float health;
+    private double health;
 
     void Awake()
     {

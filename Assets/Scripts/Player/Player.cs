@@ -101,6 +101,11 @@ public class Player : MonoBehaviour
             }
             return m_PlayerHealth;
         }
+
+        set
+        {
+            m_PlayerHealth = value;
+        }
     }
 
     public InputController playerInput;

@@ -4,16 +4,40 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Destructable : MonoBehaviour
 {
-    [SerializeField] float hitPoints; //总生命值
+    [SerializeField] double hitPoints; //总生命值
 
     public event System.Action OnDeath;
     public event System.Action OnDamageReceived;
     public event System.Action OnHealthAdd;
 
-    float damageTaken; //所受伤害量
-    float healthAdd;  //增加血量
+    private double damageTaken; //所受伤害量
+    private double healthAdd;  //增加血量
 
-    public float HitPointsRemaining
+    public double DamageTaken
+    {
+        get
+        {
+            return damageTaken;
+        }
+        set
+        {
+            damageTaken = value;
+        }
+    }
+
+    public double HealthAdd
+    {
+        get
+        {
+            return healthAdd;
+        }
+        set
+        {
+            healthAdd = value;
+        }
+    }
+
+    public double HitPointsRemaining
     {
         get
         {
@@ -48,7 +72,7 @@ public class Destructable : MonoBehaviour
     /**
      * 伤害计算
      * */
-    public virtual void TakeDamage(float amount)
+    public virtual void TakeDamage(double amount)
     {
         damageTaken += amount;
         if(OnDamageReceived != null)
@@ -75,7 +99,7 @@ public class Destructable : MonoBehaviour
      * 初始化伤害
      * @param amount: 增加生命值
      * */
-    public void AddHealth(float amount)
+    public void AddHealth(double amount)
     {
         healthAdd += amount;
 

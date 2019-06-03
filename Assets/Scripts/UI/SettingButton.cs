@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(PlayerData))]
 public class SettingButton : MonoBehaviour
 {
+    public PlayerData playerData;
+
     public void BackGame()
     {
         SceneManager.LoadScene("Scenes/Game", LoadSceneMode.Single);
@@ -15,7 +18,7 @@ public class SettingButton : MonoBehaviour
 
     public void SaveGame()
     {
-        Debug.Log("save game");
+        playerData.SaveGame();
     }
 
     public void QuitGame()
