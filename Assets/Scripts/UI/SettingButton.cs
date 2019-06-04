@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(PlayerData))]
+[RequireComponent(typeof(DataController))]
 public class SettingButton : MonoBehaviour
 {
-    public PlayerData playerData;
+    public DataController dataController;
 
     public void BackGame()
     {
@@ -18,7 +18,7 @@ public class SettingButton : MonoBehaviour
 
     public void SaveGame()
     {
-        playerData.SaveGame();
+        dataController.SaveGame();
     }
 
     public void QuitGame()

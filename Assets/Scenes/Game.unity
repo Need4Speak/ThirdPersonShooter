@@ -14990,7 +14990,7 @@ GameObject:
   - component: {fileID: 891515085}
   - component: {fileID: 891515086}
   m_Layer: 5
-  m_Name: PlayerDataScripts
+  m_Name: DataControllerScripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16941,7 +16941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseController: {fileID: 534669907}
   Panel: {fileID: 956410761}
-  playerData: {fileID: 891515086}
+  dataController: {fileID: 891515086}
 --- !u!224 &1201986811
 RectTransform:
   m_ObjectHideFlags: 0

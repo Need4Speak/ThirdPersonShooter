@@ -10,7 +10,7 @@ public class PanelOptionButtons : MonoBehaviour
 {
     [SerializeField] PauseController pauseController;
     [SerializeField] GameObject Panel;
-    public PlayerData playerData;
+    public DataController dataController;
 
     /**
      * 监听返回游戏button
@@ -30,7 +30,7 @@ public class PanelOptionButtons : MonoBehaviour
     public void SaveButtonPressed()
     {
         Debug.Log("SaveButtonPressed");
-        playerData.SaveGame();
+        dataController.SaveGame();
     }
 
     /**

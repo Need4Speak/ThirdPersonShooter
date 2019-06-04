@@ -6,19 +6,13 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour
+public class DataController:MonoBehaviour
 {
     public Player player;
-    public string filePath = Application.dataPath + "/StreamingFile/save.json";
+    public string filePath = GlobalObjectControl.Instance.filePath;
     private void Awake()
     {
         Debug.Log("保存路径：" + filePath);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     /**
@@ -43,8 +37,8 @@ public class PlayerData : MonoBehaviour
      * */
     private void SaveByJson()
     {
-        Save save = CreateSaveObj();
-        string saveJsonStr = JsonMapper.ToJson(save);
+        PlayerStore playerStore = CreateSaveObj();
+        string saveJsonStr = JsonMapper.ToJson(playerStore);
         StreamWriter streamWriter = new StreamWriter(filePath);
         streamWriter.Write(saveJsonStr);
         streamWriter.Close();
@@ -62,8 +56,8 @@ public class PlayerData : MonoBehaviour
             string jsonStr = streamReader.ReadToEnd();
             streamReader.Close();
 
-            Save save = JsonMapper.ToObject<Save>(jsonStr);
-            SetGame(save);
+            PlayerStore playerStore = JsonMapper.ToObject<PlayerStore>(jsonStr);
+            SetGame(playerStore);
             Debug.Log("加载成功");
             //UIManager._instance.ShowMessage("");
         }
@@ -77,15 +71,19 @@ public class PlayerData : MonoBehaviour
     //二进制方法：存档
     private void SaveByBin()
     {
-        Save save = CreateSaveObj();
+        filePath = GlobalObjectControl.Instance.filePath;
+        PlayerStore playerStore = CreateSaveObj();
         BinaryFormatter bf = new BinaryFormatter();
         FileStream fileStream = File.Create(filePath);
-        bf.Serialize(fileStream, save);
+        bf.Serialize(fileStream, playerStore);
         fileStream.Close();
 
         if (File.Exists(filePath))
         {
-            Debug.Log("保存成功");
+            Debug.Log("存档成功");
+        } else
+        {
+            Debug.Log("存档失败 ");
         }
     }
 
@@ -96,37 +94,39 @@ public class PlayerData : MonoBehaviour
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fileStream = File.Open(filePath, FileMode.Open);
-            Save save = (Save)bf.Deserialize(fileStream);
+            PlayerStore playerStore = (PlayerStore)bf.Deserialize(fileStream);
             fileStream.Close();
 
-            SetGame(save);
+            SetGame(playerStore);
             Debug.Log("加载成功");
         }
         else
         {
-            Debug.Log("存档文件不存在:" + filePath);
+            Debug.Log("存档文件: " + filePath + " 不存在:" );
         }
     }
 
-    private void SetGame(Save save)
+    private void SetGame(PlayerStore playerStore)
     {
-        //player.transform.position = save.PlayerTransaform.position;
-        //player.transform.rotation = save.PlayerTransaform.rotation;
-        //player.PlayerHealth = save.PlayerHealth;
-        Debug.Log("Save:" + save);
+        //player.transform.position = playerStore.PlayerTransaform.position;
+        //player.transform.rotation = playerStore.PlayerTransaform.rotation;
+        //player.PlayerHealth = playerStore.PlayerHealth;
+        Debug.Log("PlayerStore:" + playerStore);
+        Debug.Log("GlobalObjectControl.Instance == null ?: " + (GlobalObjectControl.Instance.playerStore == null));
+        GlobalObjectControl.Instance.playerStore.DamageTaken = playerStore.DamageTaken;
     }
 
     /**
      * 初始化要保存的内容
      * */
-    private Save CreateSaveObj()
+    private PlayerStore CreateSaveObj()
     {
-        Save save = new Save();
-        save.PlayerPosition = player.transform.position;
-        //save.PlayerHealth = player.PlayerHealth;
-        save.HealthAdd = player.PlayerHealth.HealthAdd;
-        save.DamageTaken = player.PlayerHealth.DamageTaken;
+        PlayerStore playerStore = new PlayerStore();
+        playerStore.Position = player.transform.position;
+        //playerStore.PlayerHealth = player.PlayerHealth;
+        playerStore.HealthAdd = player.PlayerHealth.HealthAdd;
+        playerStore.DamageTaken = player.PlayerHealth.DamageTaken;
 
-        return save;
+        return playerStore;
     }
 }

@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
     // Awake在MonoBehavior创建后就立刻调用，Start将在MonoBehavior创建后在该帧Update之前
     void Awake()
     {
+        Debug.Log("global damage: " + GlobalObjectControl.Instance.playerStore.DamageTaken);
         playerInput = GameManager.Instance.InputController;
 
         GameManager.Instance.LocalPlayer = this;

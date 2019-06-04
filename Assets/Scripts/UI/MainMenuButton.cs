@@ -15,9 +15,10 @@ public class MainMenuButton : MonoBehaviour
 
     public void LoadGame()
     {
-        PlayerData playerData = new PlayerData();
-        playerData.LoadGame();
-    
+        DataController dataController = new DataController();
+        dataController.LoadGame();
+        SceneManager.LoadScene("Scenes/Game");
+
     }
 
     public void QuitGame()
