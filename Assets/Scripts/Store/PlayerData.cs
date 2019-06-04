@@ -3,15 +3,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
     public Player player;
-    public string filePath;
+    public string filePath = Application.dataPath + "/StreamingFile/save.json";
     private void Awake()
     {
-        filePath = Application.dataPath + "/StreamingFile/save.json";
         Debug.Log("保存路径：" + filePath);
     }
 
@@ -26,7 +26,8 @@ public class PlayerData : MonoBehaviour
      * */
     public void SaveGame()
     {
-        SaveByJson();
+        //SaveByJson();
+        SaveByBin();
     }
 
     /**
@@ -34,7 +35,7 @@ public class PlayerData : MonoBehaviour
      * */
     public void LoadGame()
     {
-        LoadByJson();
+        LoadByBin();
     }
 
     /**
@@ -73,11 +74,46 @@ public class PlayerData : MonoBehaviour
         }
     }
 
+    //二进制方法：存档
+    private void SaveByBin()
+    {
+        Save save = CreateSaveObj();
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream fileStream = File.Create(filePath);
+        bf.Serialize(fileStream, save);
+        fileStream.Close();
+
+        if (File.Exists(filePath))
+        {
+            Debug.Log("保存成功");
+        }
+    }
+
+    //二进制方法：读档
+    private void LoadByBin()
+    {
+        if (File.Exists(filePath))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fileStream = File.Open(filePath, FileMode.Open);
+            Save save = (Save)bf.Deserialize(fileStream);
+            fileStream.Close();
+
+            SetGame(save);
+            Debug.Log("加载成功");
+        }
+        else
+        {
+            Debug.Log("存档文件不存在:" + filePath);
+        }
+    }
+
     private void SetGame(Save save)
     {
         //player.transform.position = save.PlayerTransaform.position;
         //player.transform.rotation = save.PlayerTransaform.rotation;
         //player.PlayerHealth = save.PlayerHealth;
+        Debug.Log("Save:" + save);
     }
 
     /**
@@ -86,7 +122,7 @@ public class PlayerData : MonoBehaviour
     private Save CreateSaveObj()
     {
         Save save = new Save();
-        //save.PlayerTransaform = player.transform;
+        save.PlayerPosition = player.transform.position;
         //save.PlayerHealth = player.PlayerHealth;
         save.HealthAdd = player.PlayerHealth.HealthAdd;
         save.DamageTaken = player.PlayerHealth.DamageTaken;

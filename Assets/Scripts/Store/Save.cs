@@ -7,19 +7,8 @@ using UnityEngine;
 [System.Serializable]
 class Save
 {
-    //private Transform m_PlayerTransaform;
-    //public Transform PlayerTransaform
-    //{
-    //    get
-    //    {
-    //        return m_PlayerTransaform;
-    //    }
-
-    //    set
-    //    {
-    //        m_PlayerTransaform = value;
-    //    }
-    //}
+    private SerializableVector3 m_PlayerPosition;
+    public SerializableVector3 PlayerPosition { get; set; }
 
     //private PlayerHealth m_PlayerHealth;
     //public PlayerHealth PlayerHealth
@@ -36,30 +25,14 @@ class Save
     //}
 
     private double damageTaken; //所受伤害量
+    public double DamageTaken { get; set; }
+
     private double healthAdd;  //增加血量
+    public double HealthAdd { get; set; }
 
-    public double DamageTaken
+    public override string ToString()
     {
-        get
-        {
-            return damageTaken;
-        }
-        set
-        {
-            damageTaken = value;
-        }
-    }
-
-    public double HealthAdd
-    {
-        get
-        {
-            return healthAdd;
-        }
-        set
-        {
-            healthAdd = value;
-        }
+        return PlayerPosition.ToString() + "DamageTaken:" + DamageTaken + "HealthAdd:" + HealthAdd;
     }
 }
 
