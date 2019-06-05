@@ -110,12 +110,13 @@ public class Player : MonoBehaviour
 
     public InputController playerInput;
     Vector2 mouseInput;
+
     // Awake在MonoBehavior创建后就立刻调用，Start将在MonoBehavior创建后在该帧Update之前
     void Awake()
     {
-        Debug.Log("global damage: " + GlobalObjectControl.Instance.playerStore.DamageTaken);
+        //Debug.Log("上次保存角色信息: " + GlobalObjectControl.Instance.playerStore.ToString());
+        Init();
         playerInput = GameManager.Instance.InputController;
-
         GameManager.Instance.LocalPlayer = this;
         if(MouseControl.LockMouse)
         {
@@ -131,7 +132,6 @@ public class Player : MonoBehaviour
     //    DontDestroyOnLoad(gameObject);
     //}
 
-    // Update is called once per frame
     void Update()
     {
         if (PlayerHealth.IsAlive && !pauseController.Paused)
@@ -140,6 +140,19 @@ public class Player : MonoBehaviour
             Jump();
             Move();
         }
+    }
+
+    /**
+     * 初始化player数据
+     * */
+    private void Init()
+    {
+        PlayerStore playerStore = GlobalObjectControl.Instance.playerStore;
+        transform.position = playerStore.Position;
+        transform.rotation = playerStore.Rotation;
+        PlayerHealth.DamageTaken = playerStore.DamageTaken;
+        PlayerHealth.AddHealth(playerStore.HealthAdd);
+        
     }
 
     /**
@@ -174,7 +187,7 @@ public class Player : MonoBehaviour
     void Move()
     {
         float moveSpeed = soldierSetting.runSpeed;
-
+        // 判断角色状态
         if(playerInput.IsWalking)
         {
             moveSpeed = soldierSetting.walkSpeed;

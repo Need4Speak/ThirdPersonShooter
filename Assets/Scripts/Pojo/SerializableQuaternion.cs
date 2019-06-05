@@ -6,12 +6,20 @@ using UnityEngine;
  * Unity Quaternion 转为可序列化 Quaternion
  * */
 [System.Serializable]
-public struct SerializableQuaternion
+public class SerializableQuaternion
 {
     public float x;
     public float y;
     public float z;
     public float w;
+
+    public SerializableQuaternion()
+    {
+        x = 0.0f;
+        y = 0.0f;
+        z = 0.0f;
+        w = 0.0f;
+    }
 
     public SerializableQuaternion(float rX, float rY, float rZ, float rW)
     {

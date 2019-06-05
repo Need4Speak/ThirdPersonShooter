@@ -12,6 +12,13 @@ public class SerializableVector3
     public float y;
     public float z;
 
+    public SerializableVector3()
+    {
+        x = 0.0f;
+        y = 0.0f;
+        z = 0.0f;
+    }
+
     public SerializableVector3(float rX, float rY, float rZ)
     {
         x = rX;

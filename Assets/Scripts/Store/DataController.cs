@@ -111,9 +111,19 @@ public class DataController:MonoBehaviour
         //player.transform.position = playerStore.PlayerTransaform.position;
         //player.transform.rotation = playerStore.PlayerTransaform.rotation;
         //player.PlayerHealth = playerStore.PlayerHealth;
-        Debug.Log("PlayerStore:" + playerStore);
-        Debug.Log("GlobalObjectControl.Instance == null ?: " + (GlobalObjectControl.Instance.playerStore == null));
-        GlobalObjectControl.Instance.playerStore.DamageTaken = playerStore.DamageTaken;
+        if(playerStore != null)
+        {
+            Debug.Log("PlayerStorePosition:" + playerStore.Position);
+            Debug.Log("PlayerStoreRotatio:" + playerStore.Rotation);
+            GlobalObjectControl.Instance.playerStore.Position = playerStore.Position;
+            GlobalObjectControl.Instance.playerStore.Rotation = playerStore.Rotation;
+            GlobalObjectControl.Instance.playerStore.DamageTaken = playerStore.DamageTaken;
+            GlobalObjectControl.Instance.playerStore.HealthAdd = playerStore.HealthAdd;
+        } else
+        {
+            Debug.LogError("playerStore = null, 存档加载失败");
+        }
+        
     }
 
     /**
@@ -123,9 +133,9 @@ public class DataController:MonoBehaviour
     {
         PlayerStore playerStore = new PlayerStore();
         playerStore.Position = player.transform.position;
-        //playerStore.PlayerHealth = player.PlayerHealth;
-        playerStore.HealthAdd = player.PlayerHealth.HealthAdd;
+        playerStore.Rotation = player.transform.rotation;
         playerStore.DamageTaken = player.PlayerHealth.DamageTaken;
+        playerStore.HealthAdd = player.PlayerHealth.HealthAdd;
 
         return playerStore;
     }
