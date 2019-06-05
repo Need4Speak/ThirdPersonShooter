@@ -7,21 +7,21 @@ using UnityEngine;
 public class PlayerShoot : WeaponController
 {
     [SerializeField] PauseController pauseController;
-    bool IsPlayerAlive;
+    private bool IsPlayerAlive;
     private void Start()
     {
         IsPlayerAlive = true;
         GetComponent<Player>().PlayerHealth.OnDeath += PlayerHealthOnDeath;
     }
 
-    /**
-     * 玩家时候
-     * */
     private void PlayerHealthOnDeath()
     {
         IsPlayerAlive = false;
     }
 
+    /**
+     * 玩家状态
+     * */
     private void Update()
     {
         if (pauseController.Paused || !IsPlayerAlive)

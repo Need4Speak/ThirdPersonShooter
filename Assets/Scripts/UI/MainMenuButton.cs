@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,11 +9,25 @@ using UnityEngine.SceneManagement;
  * */
 public class MainMenuButton : MonoBehaviour
 {
+    /**
+     * 开始新游戏
+     * */
     public void PlayGame()
     {
+        string filePath = GlobalObjectControl.Instance.filePath;
+        // 删除存档文件，开始新游戏
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+            GlobalObjectControl.Instance.NewGame = true;
+        }
+
         SceneManager.LoadScene("Scenes/Game");
     }
 
+    /**
+     * 读取游戏
+     * */
     public void LoadGame()
     {
         DataController dataController = new DataController();
@@ -21,6 +36,9 @@ public class MainMenuButton : MonoBehaviour
 
     }
 
+    /**
+     * 退出游戏
+     * */
     public void QuitGame()
     {
         Application.Quit();

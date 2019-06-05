@@ -148,11 +148,14 @@ public class Player : MonoBehaviour
     private void Init()
     {
         PlayerStore playerStore = GlobalObjectControl.Instance.playerStore;
-        transform.position = playerStore.Position;
-        transform.rotation = playerStore.Rotation;
-        PlayerHealth.DamageTaken = playerStore.DamageTaken;
-        PlayerHealth.AddHealth(playerStore.HealthAdd);
-        
+        // 不是新游戏，加载文件中的配置信息
+        if(!GlobalObjectControl.Instance.NewGame)
+        {
+            transform.position = playerStore.Position;
+            transform.rotation = playerStore.Rotation;
+            PlayerHealth.DamageTaken = playerStore.DamageTaken;
+            PlayerHealth.AddHealth(playerStore.HealthAdd);
+        }
     }
 
     /**
