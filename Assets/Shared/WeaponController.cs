@@ -10,7 +10,9 @@ public class WeaponController : MonoBehaviour
 
     Shooter[] weapons;
 
-    int currentWeaponIndex;
+    private int currentWeaponIndex;  // 当前武器索引
+    public int CurrentWeaponIndex { get => currentWeaponIndex; set => currentWeaponIndex = value; }
+
     Transform weaponHolster;
 
     public event System.Action<Shooter> OnWeaponSwitch;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * 人
+ * 武器父类
  * */
 public class Shooter : MonoBehaviour
 {

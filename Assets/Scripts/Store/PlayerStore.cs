@@ -1,5 +1,6 @@
 ﻿
 
+using System.Text;
 using UnityEngine;
 /**
 * Player 所要保存的信息
@@ -19,25 +20,46 @@ public class PlayerStore
     private double healthAdd;  //增加血量
     public double HealthAdd { get => healthAdd; set => healthAdd = value; }
 
+    private int currentWeaponIndex;  // 当前武器索引
+    public int CurrentWeaponIndex { get => currentWeaponIndex; set => currentWeaponIndex = value; }
+
+    private int remainingAmmoInClip;  // 弹匣中剩余弹药量
+    public int RemainingAmmoInClip { get => remainingAmmoInClip; set => remainingAmmoInClip = value; }
+
+    private int remainingAmmoInInventory;  // 总剩余弹药量
+    public int RemainingAmmoInInventory { get => remainingAmmoInInventory; set => remainingAmmoInInventory = value; }
+
     public PlayerStore()
     {
         this.m_Position = new SerializableVector3();
         this.m_Rotation = new SerializableQuaternion();
         this.damageTaken = 0.0;
         this.healthAdd = 0.0;
+        this.currentWeaponIndex = 0;
+        this.remainingAmmoInClip = 0;
+        this.remainingAmmoInInventory = 0;
     }
 
-    public PlayerStore(SerializableVector3 m_Position, SerializableQuaternion m_Rotation, double damageTaken, double healthAdd)
+    public PlayerStore(SerializableVector3 m_Position, SerializableQuaternion m_Rotation, 
+        double damageTaken, double healthAdd, int currentWeaponIndex, int remainingAmmoInClip, int remainingAmmoInInventory)
     {
         this.m_Position = m_Position;
         this.m_Rotation = m_Rotation;
         this.damageTaken = damageTaken;
         this.healthAdd = healthAdd;
+        this.currentWeaponIndex = currentWeaponIndex;
+        this.remainingAmmoInClip = remainingAmmoInClip;
+        this.remainingAmmoInInventory = remainingAmmoInClip;
     }
 
     public override string ToString()
     {
-        return Position.ToString() + "" + Rotation.ToString() + "DamageTaken:" + DamageTaken + "HealthAdd:" + HealthAdd;
+        StringBuilder sb = new StringBuilder();
+        sb.Append(Position.ToString()).Append(", ").Append(Rotation.ToString()).Append(", ").Append("DamageTaken:" + DamageTaken).Append(", ").
+            Append("HealthAdd:" + HealthAdd).Append("currentWeaponIndex: " + currentWeaponIndex).Append(", ").
+            Append("remainingAmmoInClip: " + remainingAmmoInClip).Append(", ").
+            Append("remainingAmmoInInventory: " + remainingAmmoInInventory);
+        return sb.ToString();
     }
 }
 

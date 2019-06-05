@@ -25,7 +25,7 @@ public class EnemyShoot : WeaponController
     private void EnemyPlayerOnTargetSelected(Player target)
     {
         ActiveWeapon.AimTarget = target.transform;
-        ActiveWeapon.AimTargetOffset = Vector3.up * 1.5f;
+        ActiveWeapon.AimTargetOffset = Vector3.up * 0.2f;
         StartBurst();
     }
 

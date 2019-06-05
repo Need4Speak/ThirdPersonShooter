@@ -7,7 +7,7 @@ using UnityEngine;
  * */
 public class WeaponReloader : MonoBehaviour
 {
-    [SerializeField] int maxAmmo;
+    [SerializeField] int maxAmmo; //最大弹药量
     [SerializeField] float reloadTime;
     [SerializeField] int clipSize;  // 弹匣弹药量
     [SerializeField] Container inventory; //总弹药量

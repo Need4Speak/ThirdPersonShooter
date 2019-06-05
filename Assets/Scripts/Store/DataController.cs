@@ -108,17 +108,17 @@ public class DataController:MonoBehaviour
 
     private void SetGame(PlayerStore playerStore)
     {
-        //player.transform.position = playerStore.PlayerTransaform.position;
-        //player.transform.rotation = playerStore.PlayerTransaform.rotation;
-        //player.PlayerHealth = playerStore.PlayerHealth;
         if(playerStore != null)
         {
-            Debug.Log("PlayerStorePosition:" + playerStore.Position);
-            Debug.Log("PlayerStoreRotatio:" + playerStore.Rotation);
-            GlobalObjectControl.Instance.playerStore.Position = playerStore.Position;
-            GlobalObjectControl.Instance.playerStore.Rotation = playerStore.Rotation;
-            GlobalObjectControl.Instance.playerStore.DamageTaken = playerStore.DamageTaken;
-            GlobalObjectControl.Instance.playerStore.HealthAdd = playerStore.HealthAdd;
+            PlayerStore playerStoreGlobal = GlobalObjectControl.Instance.playerStore;
+            playerStoreGlobal.Position = playerStore.Position;
+            playerStoreGlobal.Rotation = playerStore.Rotation;
+            playerStoreGlobal.DamageTaken = playerStore.DamageTaken;
+            playerStoreGlobal.HealthAdd = playerStore.HealthAdd;
+            playerStoreGlobal.CurrentWeaponIndex = playerStore.CurrentWeaponIndex;
+            playerStoreGlobal.RemainingAmmoInClip = playerStore.RemainingAmmoInClip;
+            playerStoreGlobal.RemainingAmmoInInventory = playerStore.RemainingAmmoInInventory;
+            Debug.Log("成功加载配置： " + playerStoreGlobal);
         } else
         {
             Debug.LogError("playerStore = null, 存档加载失败");
@@ -136,7 +136,9 @@ public class DataController:MonoBehaviour
         playerStore.Rotation = player.transform.rotation;
         playerStore.DamageTaken = player.PlayerHealth.DamageTaken;
         playerStore.HealthAdd = player.PlayerHealth.HealthAdd;
-
+        playerStore.CurrentWeaponIndex = player.PlayerShoot.CurrentWeaponIndex;
+        playerStore.RemainingAmmoInClip = player.PlayerShoot.ActiveWeapon.reloader.RoundsRemainingInClip;
+        playerStore.RemainingAmmoInInventory = player.PlayerShoot.ActiveWeapon.reloader.RoundsRemainingInInventory;
         return playerStore;
     }
 }
