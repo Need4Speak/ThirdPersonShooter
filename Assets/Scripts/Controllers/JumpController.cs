@@ -39,8 +39,8 @@ public class JumpController : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
         rb.AddForce(movement * speed);
-
-        if ( onGround)
+        Debug.Log("in jump fun");
+        if (onGround)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }

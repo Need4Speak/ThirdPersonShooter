@@ -16,6 +16,7 @@ public class Destructable : MonoBehaviour
 
     private double damageTaken; //所受伤害量
     private double healthAdd;  //增加血量
+    public AudioController audioInjured; //受伤音效
 
     public double DamageTaken
     {
@@ -78,6 +79,8 @@ public class Destructable : MonoBehaviour
      * */
     public virtual void TakeDamage(double amount)
     {
+        if(audioInjured != null) { audioInjured.Play(); }
+        
         damageTaken += amount;
         if(OnDamageReceived != null)
         {

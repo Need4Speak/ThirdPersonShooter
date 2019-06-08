@@ -10,8 +10,8 @@ public class Shooter : MonoBehaviour
     [SerializeField] float rateOfFire;
     [SerializeField] Projectile projectile;
     [SerializeField] Transform hand;
-    [SerializeField] AudioController audioFire; //开火音效
-    [SerializeField] AudioController audioReload; //换弹音效
+    public AudioController audioFire; //开火音效
+    public AudioController audioReload; //换弹音效
 
     Transform muzzle; // 枪口
 
@@ -99,7 +99,8 @@ public class Shooter : MonoBehaviour
         nextFireAllowed = Time.time + rateOfFire;
         //print("Firing in " + Time.time);
 
-        muzzle.LookAt(AimTarget.position + AimTargetOffset);  // 枪口指向瞄准物
+        //muzzle.LookAt(AimTarget.position + AimTargetOffset);  // 枪口指向瞄准物
+        muzzle.LookAt(AimTarget.position + AimTargetOffset);
 
         FireEffect();
 
