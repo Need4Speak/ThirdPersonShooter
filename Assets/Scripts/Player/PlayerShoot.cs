@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 玩家射击控制
+/// </summary>
 [RequireComponent(typeof(Player))]
 public class PlayerShoot : WeaponController
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * 换弹
+ * 换弹控制
  * */
 public class WeaponReloader : MonoBehaviour
 {

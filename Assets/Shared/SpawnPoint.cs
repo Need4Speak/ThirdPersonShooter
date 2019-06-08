@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 重生点
+/// </summary>
 public class SpawnPoint : MonoBehaviour
 {
     private void OnDrawGizmos()

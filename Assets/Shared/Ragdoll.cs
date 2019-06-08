@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ragdoll控制
+/// </summary>
 public class Ragdoll : MonoBehaviour
 {
     public Animator animator;

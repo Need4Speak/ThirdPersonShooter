@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * 控制敌人延检查点移动
- * */
+/// <summary>
+/// 控制敌人延检查点移动
+/// </summary>
 [RequireComponent(typeof(PathFinder))]
 [RequireComponent(typeof(EnemyPlayer))]
 public class EnemyPatrol : MonoBehaviour

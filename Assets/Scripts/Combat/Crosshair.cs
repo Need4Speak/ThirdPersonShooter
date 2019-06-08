@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 /**
- * 十字准星
+ * 控制十字准星
  * */
 public class Crosshair : MonoBehaviour
 {

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 捡弹控制
+/// </summary>
 public class AmmoPickup : PickupItem
 {
     [SerializeField] EWeaponType weaponType;  //弹药类型

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 物体重生控制
+/// </summary>
 public class Respawner : MonoBehaviour
 {
     /**

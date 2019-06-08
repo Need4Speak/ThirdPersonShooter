@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 按钮事件监听
+/// </summary>
 [RequireComponent(typeof(DataController))]
 public class SettingButton : MonoBehaviour
 {

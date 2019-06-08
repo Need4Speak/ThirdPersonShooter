@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * 枪
+ * 枪支控制
  * */
 public class AssaultRifle : Shooter
 {

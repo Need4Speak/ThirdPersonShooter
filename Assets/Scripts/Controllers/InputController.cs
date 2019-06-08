@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 输入控制
+/// </summary>
 public class InputController : MonoBehaviour
 {
     public float Vertical;
@@ -18,9 +21,9 @@ public class InputController : MonoBehaviour
     public bool MouseWheelDown;
     public bool EscDown;
 
-    /**
-     * 获取输入
-     * */
+    /// <summary>
+    /// 获取输入
+    /// </summary>
     void Update()
     {
         Vertical = Input.GetAxis("Vertical");

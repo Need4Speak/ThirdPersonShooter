@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/**
- * 第三人称摄像机
- * */
+
+/// <summary>
+/// 第三人称摄像机
+/// </summary>
 public class ThirdPersonCamera : MonoBehaviour
 {
     /**

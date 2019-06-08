@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 路线点
+/// </summary>
 public class WayPoint : MonoBehaviour
 {
     // Start is called before the first frame update

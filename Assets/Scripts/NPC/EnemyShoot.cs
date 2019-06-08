@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敌人射击控制
+/// </summary>
 public class EnemyShoot : WeaponController
 {
     [SerializeField] float shootingSpeed;

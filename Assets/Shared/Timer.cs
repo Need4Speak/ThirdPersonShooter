@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 /**
- * 计时器
+ * 时间延时
  * */
 public class Timer : MonoBehaviour
 {

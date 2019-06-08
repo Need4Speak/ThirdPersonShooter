@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 武器控制
+/// </summary>
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] float weaponSwitchTime;

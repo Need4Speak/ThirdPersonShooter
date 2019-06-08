@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敌人生命控制
+/// </summary>
 public class EnemyHealth : Destructable
 {
     [SerializeField]

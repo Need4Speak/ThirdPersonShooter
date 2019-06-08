@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * 配置文件
+ * 角色配置文件
  * */
  [CreateAssetMenu(fileName = "Soldier", menuName = "Data/Soldier")]
 public class Soldier : ScriptableObject

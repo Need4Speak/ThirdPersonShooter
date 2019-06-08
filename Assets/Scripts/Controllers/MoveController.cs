@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 角色移动控制
+/// </summary>
 public class MoveController : MonoBehaviour
 {
     /**

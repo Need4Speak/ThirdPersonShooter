@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 弹药统计
+/// </summary>
 public class AmmoCounter : MonoBehaviour
 {
     [SerializeField] Text text;

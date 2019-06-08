@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敌人动画控制
+/// </summary>
 [RequireComponent(typeof(PathFinder))]
 public class EnemyAnimation : MonoBehaviour
 {

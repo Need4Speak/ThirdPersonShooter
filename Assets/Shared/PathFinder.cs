@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-/**
- * 寻路
- * */
+/// <summary>
+/// 游戏寻路
+/// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
 public class PathFinder : MonoBehaviour
 {

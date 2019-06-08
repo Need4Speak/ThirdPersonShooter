@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敌人控制
+/// </summary>
 [RequireComponent(typeof(PathFinder))]
 [RequireComponent(typeof(EnemyHealth))]
 //[RequireComponent(typeof(Scanner))]
-/**
- * ai
- * */
 public class EnemyPlayer : MonoBehaviour
 {
     PathFinder pathFinder;

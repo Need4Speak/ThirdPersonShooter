@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敌人扫描控制
+/// </summary>
 [RequireComponent(typeof(SphereCollider))]
 public class Scanner : MonoBehaviour
 {

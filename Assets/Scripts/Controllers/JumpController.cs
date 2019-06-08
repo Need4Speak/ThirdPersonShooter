@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 角色跳跃控制
+/// </summary>
 public class JumpController : MonoBehaviour
 {
     public LayerMask groundLayers;

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * 捡到
- * */
+/// <summary>
+/// 血包控制
+/// </summary>
 public class BloodPickup : PickupItem
 {
     private PlayerHealth playerHealth;

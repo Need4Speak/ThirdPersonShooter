@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * 生命处理
+ * 生命控制
  * */
 public class Health : Destructable
 {

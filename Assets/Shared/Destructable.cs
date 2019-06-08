@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// 可攻击物体父类
+/// </summary>
 [RequireComponent(typeof(Collider))]
 public class Destructable : MonoBehaviour
 {

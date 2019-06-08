@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 /**
- * 控制靶
+ * 射击靶控制
  * */
 public class ShootingRangeTarget : Destructable
 {

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 游戏中选项显示控制
+/// </summary>
 public class PanelOption : MonoBehaviour
 {
     [SerializeField] GameObject Panel;

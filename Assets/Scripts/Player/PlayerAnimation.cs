@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 玩家动画控制
+/// </summary>
 public class PlayerAnimation : MonoBehaviour
 {
     Animator animator;

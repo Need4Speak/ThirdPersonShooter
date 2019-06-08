@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * 角色相关状态
- * */
+/// <summary>
+/// 玩家状态
+/// </summary>
 public class PlayerState : MonoBehaviour
 {
     // 角色移动状态

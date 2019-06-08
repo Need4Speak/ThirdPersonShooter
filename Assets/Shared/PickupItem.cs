@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * 捡物体
- * */
+/// <summary>
+/// 物体捡拾控制
+/// </summary>
 public class PickupItem : MonoBehaviour
 {
     private void OnTriggerEnter(Collider collider)

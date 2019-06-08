@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 角色血量控制
+/// </summary>
 public class PlayerHealth : Destructable
 {
     [SerializeField] SpawnPoint[] spawnPoints;

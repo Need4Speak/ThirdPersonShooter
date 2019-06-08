@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * 控制设置面板是否显示
- * */
+/// <summary>
+/// 游戏暂停与继续控制
+/// </summary>
 public class PauseController : MonoBehaviour
 {
     private bool paused;
