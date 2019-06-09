@@ -20,6 +20,7 @@ public class InputController : MonoBehaviour
     public bool MouseWheelUp;
     public bool MouseWheelDown;
     public bool EscDown;
+    public bool PickupDown;
 
     /// <summary>
     /// 获取输入
@@ -39,5 +40,6 @@ public class InputController : MonoBehaviour
         MouseWheelUp = Input.GetAxis("Mouse ScrollWheel") > 0;
         MouseWheelDown = Input.GetAxis("Mouse ScrollWheel") < 0;
         EscDown = Input.GetKeyDown(KeyCode.Escape);
+        PickupDown = Input.GetKeyDown(KeyCode.F);
     }
 }

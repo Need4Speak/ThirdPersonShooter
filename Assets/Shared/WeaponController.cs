@@ -37,7 +37,7 @@ public class WeaponController : MonoBehaviour
         canFire = true;
         weaponHolster = transform.Find("Weapons");
         weapons = weaponHolster.GetComponentsInChildren<Shooter>(true);
-        print(weapons.Length);
+        //print(weapons.Length);
         if (weapons.Length > 0)
         {
             Equip(0);
