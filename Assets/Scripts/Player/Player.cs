@@ -124,7 +124,6 @@ public class Player : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
         previousPosition = transform.position;
-
     }
 
     //private void Start()

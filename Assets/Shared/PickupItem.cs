@@ -25,13 +25,13 @@ public class PickupItem : MonoBehaviour
     /// <param name="collider"></param>
     private void OnTriggerStay(Collider collider)
     {
-        print(collider.tag);
+        //print(collider.tag);
         if (collider.tag != "Player")
         {
             return;
         }
 
-        Debug.Log("in pick up item, needpresskey:" + needPressKey);
+        //Debug.Log("in pick up item, needpresskey:" + needPressKey);
         if (needPressKey) {
             pickupHelp.SetActive(true);
             if(GameManager.Instance.InputController.PickupDown)

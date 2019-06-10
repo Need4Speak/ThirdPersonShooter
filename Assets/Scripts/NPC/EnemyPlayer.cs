@@ -112,8 +112,11 @@ public class EnemyPlayer : MonoBehaviour
         {
             return;
         }
-
-        transform.LookAt(priorityTarget.transform.transform.position);
+        // 角色没死忘时，跟随目标
+        if(EnemyHealth.IsAlive)
+        {
+            transform.LookAt(priorityTarget.transform.transform.position);
+        }
     }
 
 }

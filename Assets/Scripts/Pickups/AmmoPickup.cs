@@ -18,6 +18,7 @@ public class AmmoPickup : PickupItem
     {
         var playerInventory = item.GetComponentInChildren<Container>();
         GameManager.Instance.Respawner.Despawn(gameObject, respawnTime);
+        Debug.Log("捡到弹药：" + weaponType.ToString() + ", 数量为" + amount);
         playerInventory.Put(weaponType.ToString(), amount);
         item.GetComponent<Player>().PlayerShoot.ActiveWeapon.reloader.HandleOnAmmoChanged();
     }

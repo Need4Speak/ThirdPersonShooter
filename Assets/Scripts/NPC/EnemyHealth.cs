@@ -10,9 +10,12 @@ public class EnemyHealth : Destructable
     [SerializeField]
     Ragdoll ragdoll;
 
+    public EnemyShoot enemyShoot;
+
     public override void Die()
     {
         base.Die();
         ragdoll.EnableRagdoll(true);
+
     }
 }

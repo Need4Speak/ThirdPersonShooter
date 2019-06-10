@@ -11,7 +11,7 @@ public class WeaponController : MonoBehaviour
 
     [HideInInspector] public bool canFire;
 
-    Shooter[] weapons;
+    private Shooter[] weapons;
 
     private int currentWeaponIndex;  // 当前武器索引
     public int CurrentWeaponIndex { get => currentWeaponIndex; set => currentWeaponIndex = value; }
@@ -41,6 +41,7 @@ public class WeaponController : MonoBehaviour
         if (weapons.Length > 0)
         {
             Equip(0);
+            //ActiveWeapon.GetComponent<WeaponPickup>().enabled = false;  //关闭被捡拾脚本
         }
     }
 
@@ -92,5 +93,39 @@ public class WeaponController : MonoBehaviour
         {
             OnWeaponSwitch(m_ActiveWeapon);
         }
+    }
+
+    /// <summary>
+    /// 更换武器
+    /// </summary>
+    /// <param name="index">要更换武器的索引</param>
+    /// <param name="newWeapon">新武器</param>
+    public void ChangeWeapon(int index, Shooter newWeapon)
+    {
+        weapons[index] = newWeapon;
+        Equip(index);
+    }
+
+    /// <summary>
+    /// 根据索引获取武器
+    /// </summary>
+    /// <param name="index">索引</param>
+    /// <returns>武器引用</returns>
+    public Shooter GetWeaponByIndex(int index)
+    {
+        if(weapons.Length > 0)
+        {
+            return weapons[index];
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// 获取当前所持有的武器
+    /// </summary>
+    /// <returns>武器</returns>
+    public Shooter GetCurrentWeapon()
+    {
+        return GetWeaponByIndex(currentWeaponIndex);
     }
 }

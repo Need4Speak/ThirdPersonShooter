@@ -135,6 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90402ff31ebe32c458144db508e2e75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  needPressKey: 0
+  pickupHelp: {fileID: 0}
+  weaponType: 1
   respawnTime: 15
   amount: 20

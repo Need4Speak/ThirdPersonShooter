@@ -5,7 +5,7 @@ using System.Linq;
 using System;
 
 /**
- * 弹匣
+ * 弹药包，存储所有弹药
  * */
 public class Container : MonoBehaviour
 {
@@ -67,9 +67,12 @@ public class Container : MonoBehaviour
         }
     }
 
-    /**
-     * 添加弹药
-     * */
+    /// <summary>
+    /// 给指定类型弹药设置初始化数量
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="maximum"></param>
+    /// <returns></returns>
     public System.Guid Add(string name, int maximum)
     {
         items.Add(new ContainerItem
@@ -89,12 +92,15 @@ public class Container : MonoBehaviour
      * */
     public void Put(string name, int amount)
     {
+        Debug.Log("向Inventory添加弹药:" + name);
         var containerItem = items.Where(x => x.Name == name).FirstOrDefault();
         if(containerItem == null)
         {
             return;
         }
+        //Debug.Log("添加弹药前:" + containerItem.Name + containerItem.Id + "有弹药量：" + containerItem.Remaining + ", 已使用弹药量：" + containerItem.amountTaken);
         containerItem.Set(amount);
+        //Debug.Log("添加弹药后:" + containerItem.Name + containerItem.Id + "有弹药量：" + containerItem.Remaining + ", 已使用弹药量：" + containerItem.amountTaken);
     }
 
     /**

@@ -58,6 +58,7 @@ public class WeaponReloader : MonoBehaviour
         inventory.OnContainerReady += () => {
             containerItemId = inventory.Add(weaponType.ToString(), maxAmmo);
         };
+        Debug.Log("weaponType.ToString(): " + weaponType.ToString() + "containerItemId: " + containerItemId);
     }
 
     /**

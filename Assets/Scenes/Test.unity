@@ -214,13 +214,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 382662888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55d982ce2008a244f952ab76aa3129cd, type: 3}
+  m_Script: {fileID: 11500000, guid: ff150daa0e8e6234995b8e2cad7ecc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 989580231}
-  agent: {fileID: 0}
-  animator: {fileID: 0}
-  particleClone: {fileID: 0}
 --- !u!195 &382662894
 NavMeshAgent:
   m_ObjectHideFlags: 0
