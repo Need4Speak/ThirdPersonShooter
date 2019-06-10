@@ -30,7 +30,7 @@ public class PanelOption : MonoBehaviour
     {
         if (playerInput.EscDown)
         {
-            Debug.Log("pree esc");
+            //Debug.Log("pree esc");
             if (pauseController.Paused)
             {
                 Panel.gameObject.SetActive(false);

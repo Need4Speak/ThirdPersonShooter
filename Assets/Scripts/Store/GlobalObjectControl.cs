@@ -44,4 +44,20 @@ public class GlobalObjectControl : MonoBehaviour
         }
         //Debug.Log("Instance == null ?: " + Instance == null);
     }
+
+    /**
+ * 获取输入
+ * */
+    private DataController m_DataController;
+    public DataController DataController
+    {
+        get
+        {
+            if (m_DataController == null)
+            {
+                m_DataController = new DataController();
+            }
+            return DataController;
+        }
+    }
 }

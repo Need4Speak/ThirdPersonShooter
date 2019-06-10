@@ -62,7 +62,7 @@ public class DataController:MonoBehaviour
         PlayerStore playerStore = GetStoreFileFromServer();
         if(playerStore != null)
         {
-            Debug.Log("playerStore != null");
+            Debug.Log("服务器存档信息： " + playerStore);
             SetGame(playerStore);
             return true;
         }
@@ -143,11 +143,16 @@ public class DataController:MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 根据服务器存档设置GlobalObjectControl，供其他脚本调用
+    /// </summary>
+    /// <param name="playerStore"></param>
     private void SetGame(PlayerStore playerStore)
     {
         if(playerStore != null)
         {
             PlayerStore playerStoreGlobal = GlobalObjectControl.Instance.playerStore;
+            playerStoreGlobal.Userid= playerStore.Userid;
             playerStoreGlobal.Position = playerStore.Position;
             playerStoreGlobal.Rotation = playerStore.Rotation;
             playerStoreGlobal.DamageTaken = playerStore.DamageTaken;
@@ -169,6 +174,7 @@ public class DataController:MonoBehaviour
     private PlayerStore CreateSaveObj()
     {
         PlayerStore playerStore = new PlayerStore();
+        playerStore.Userid = GlobalObjectControl.Instance.Userid;
         playerStore.Position = player.transform.position;
         playerStore.Rotation = player.transform.rotation;
         playerStore.DamageTaken = player.PlayerHealth.DamageTaken;
@@ -191,7 +197,7 @@ public class DataController:MonoBehaviour
         //t1.Start();
         //Thread t2 = new Thread(ReciveMsg);
         //t2.Start();
-        SendMsg(client, JsonConvert.SerializeObject(new Request(1, "get store file")));
+        SendMsg(client, JsonConvert.SerializeObject(new Request(1, GlobalObjectControl.Instance.Userid)));
         PlayerStore playerStore = ReciveMsg(client);
         //client.Close();
         //BinaryWriter bw = new BinaryWriter(new FileStream(storeFile,
@@ -209,7 +215,7 @@ public class DataController:MonoBehaviour
     public void DeleteStoreFileAtServer()
     {
         Socket client = GlobalObjectControl.Instance.client;
-        SendMsg(client, JsonConvert.SerializeObject(new Request(2, "delete store file")));
+        SendMsg(client, JsonConvert.SerializeObject(new Request(2, GlobalObjectControl.Instance.Userid)));
     }
 
     /// <summary>

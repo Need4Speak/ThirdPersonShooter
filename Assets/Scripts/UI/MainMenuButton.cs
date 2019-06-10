@@ -51,7 +51,8 @@ public class MainMenuButton : MonoBehaviour
     {
         //DataController dataController = new DataController();
         bool result = dataController.LoadGame();
-        if(result)
+        //bool result = GlobalObjectControl.Instance.DataController.LoadGame();
+        if (result)
         {
             GlobalObjectControl.Instance.NewGame = false;
             SceneManager.LoadScene("Scenes/Game");

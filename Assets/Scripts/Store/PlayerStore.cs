@@ -1,6 +1,4 @@
-﻿
-
-using System.Text;
+﻿using System.Text;
 using UnityEngine;
 /**
 * Player 所要保存的信息
@@ -8,6 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerStore
 {
+    private string userid;  // 用户账号
+    public string Userid { get => userid; set => userid = value; }
+
     private SerializableVector3 m_Position;  // 坐标
     public SerializableVector3 Position { get => m_Position; set => m_Position = value; }
 
@@ -31,6 +32,7 @@ public class PlayerStore
 
     public PlayerStore()
     {
+        this.userid = "empty";
         this.m_Position = new SerializableVector3();
         this.m_Rotation = new SerializableQuaternion();
         this.damageTaken = 0.0;
@@ -52,10 +54,23 @@ public class PlayerStore
         this.remainingAmmoInInventory = remainingAmmoInClip;
     }
 
+    public PlayerStore(string userid, SerializableVector3 m_Position, SerializableQuaternion m_Rotation,
+    double damageTaken, double healthAdd, int currentWeaponIndex, int remainingAmmoInClip, int remainingAmmoInInventory)
+    {
+        this.userid = userid;
+        this.m_Position = m_Position;
+        this.m_Rotation = m_Rotation;
+        this.damageTaken = damageTaken;
+        this.healthAdd = healthAdd;
+        this.currentWeaponIndex = currentWeaponIndex;
+        this.remainingAmmoInClip = remainingAmmoInClip;
+        this.remainingAmmoInInventory = remainingAmmoInClip;
+    }
+
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(Position.ToString()).Append(", ").Append(Rotation.ToString()).Append(", ").Append("DamageTaken:" + DamageTaken).Append(", ").
+        sb.Append("user id: " + userid).Append(", ").Append(Position.ToString()).Append(", ").Append(Rotation.ToString()).Append(", ").Append("DamageTaken:" + DamageTaken).Append(", ").
             Append("HealthAdd:" + HealthAdd).Append("currentWeaponIndex: " + currentWeaponIndex).Append(", ").
             Append("remainingAmmoInClip: " + remainingAmmoInClip).Append(", ").
             Append("remainingAmmoInInventory: " + remainingAmmoInInventory);
