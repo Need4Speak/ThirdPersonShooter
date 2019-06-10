@@ -13,6 +13,7 @@ public class PanelOption : MonoBehaviour
 
     private void Awake()
     {
+        Panel.SetActive(false);
         playerInput = GameManager.Instance.InputController;
     }
 
